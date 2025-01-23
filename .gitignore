@@ -35,10 +35,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.env.local
-
+# project-specific unnecessary files
+RegexExample.class
+tsconfig.json
+tailwind.config.ts
+postcss.config.mjs
+next.config.js
+next.config.mjs
+next-auth.d.ts
 components.json
-
-package.json
 package-lock.json
-
