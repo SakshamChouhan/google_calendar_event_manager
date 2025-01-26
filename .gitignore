@@ -38,3 +38,4 @@ yarn-error.log*
 # Ignore unnecessary project files
 RegexExample.class
 package-lock.json
+.vercel
