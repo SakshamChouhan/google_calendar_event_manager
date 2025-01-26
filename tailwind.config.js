@@ -1,6 +1,5 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   darkMode: ["class"],
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -70,12 +69,10 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-    }
+    },
   },
   plugins: [
     require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
+    require("@tailwindcss/typography")
   ],
-};
-
-export default config;
+}

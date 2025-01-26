@@ -1,5 +1,13 @@
-export function exportToCsv(events) {
-  const headers = ["Event", "Start", "End", "Description"]
+// lib/exportToCsv.ts
+interface CalendarEvent {
+  summary: string;
+  start: { dateTime: string };
+  end: { dateTime: string };
+  description?: string;
+}
+
+export function exportToCsv(events: CalendarEvent[]) {
+  const headers = ["Event", "Start", "End", "Description"];
   const csvContent = [
     headers.join(","),
     ...events.map((event) =>
@@ -10,20 +18,22 @@ export function exportToCsv(events) {
         event.description || "",
       ]
         .map((cell) => `"${cell.replace(/"/g, '""')}"`)
-        .join(","),
+        .join(",")
     ),
-  ].join("\n")
+  ].join("\n");
 
-  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
-  const link = document.createElement("a")
+  // Client-side check
+  if (typeof window === 'undefined') return;
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
   if (link.download !== undefined) {
-    const url = URL.createObjectURL(blob)
-    link.setAttribute("href", url)
-    link.setAttribute("download", "calendar_events.csv")
-    link.style.visibility = "hidden"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
+    link.setAttribute("download", "calendar_events.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }
-

@@ -1,4 +1,4 @@
-import { Skeleton } from "../ui/skeleton";
+import { Skeleton } from "../components/ui/skeleton";
 
 export function EventSkeleton() {
   return (
@@ -15,4 +15,3 @@ export function EventSkeleton() {
     </div>
   )
 }
-
